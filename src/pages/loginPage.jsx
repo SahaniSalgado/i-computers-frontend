@@ -2,10 +2,16 @@ import { BsKeyboard } from "react-icons/bs";
 import { GrGoogle } from "react-icons/gr";
 import { MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 
 
 export default function LoginPage() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    
+
     return(
         <div className=" w-full h-full bg-[url('/login-bg.jpg')] bg-cover flex bg-no-repeat justify-center items-center ">
 
@@ -15,7 +21,7 @@ export default function LoginPage() {
                
                 <h1 className="w-full h-[80px] text-center text-3xl font-bold text-white p-5">
                     Login
-                </h1>
+                </h1> 
 
                 {/* ENTER EMAIL */}
                     <div className="w-full">
@@ -23,7 +29,13 @@ export default function LoginPage() {
                     <MdEmail /> Email
                     </label>
 
-                    <input type="email" className="w-full h-[40px] rounded-md px-2 border border-white"  placeholder="enter your email" /> 
+                    <input type="email" 
+                    onChange={
+                        (e) => setEmail(e.target.value)
+                    } 
+                    value={email}
+                    type="email"
+                    className="w-full h-[40px] rounded-md px-2 border border-white"  placeholder="enter your email" /> 
 
 
             
@@ -33,7 +45,13 @@ export default function LoginPage() {
                     <BsKeyboard/> Password
                     </label>
 
-                    <input type="password" className="w-full h-[40px] rounded-md px-2 border border-white "  placeholder="enter your password" /> 
+                    <input type="password" 
+                    onChange={
+                        (e) => setPassword(e.target.value)
+                    } 
+                    value={password}
+                    type="password"
+                    className="w-full h-[40px] rounded-md px-2 border border-white "  placeholder="enter your password" /> 
 
                 {/* FORGOT PASSWORD */}
                     <p className="w-full mt-2 text-white text-right italic">
@@ -44,7 +62,7 @@ export default function LoginPage() {
                     </p>
 
                 {/* SIGN IN BUTTON */}
-                    <button className="w-full h-[50px] bg-blue-950 mt-10 text-white rounded-lg transition-transform duration-200 hover:-translate-y-0.5 hover:bg-blue-800">
+                    <button onClick={handleLogin} className="w-full h-[50px] bg-blue-950 mt-10 text-white rounded-lg transition-transform duration-200 hover:-translate-y-0.5 hover:bg-blue-800">
                         Sign In</button>
 
                 {/* CREATE A ACCOUNT*/}        
